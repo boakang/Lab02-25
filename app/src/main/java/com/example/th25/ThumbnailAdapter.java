@@ -34,47 +34,31 @@ public class ThumbnailAdapter extends BaseAdapter {
         return position;
     }
 
+    // Hiển thị trên Spinner (mặc định) - Chỉ hiện tên
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder holder;
-
         if (convertView == null) {
-            convertView = LayoutInflater.from(context).inflate(R.layout.item_thumbnail, parent, false);
-            holder = new ViewHolder();
-            holder.imgThumbnail = convertView.findViewById(R.id.imgThumbnail);
-            holder.txtThumbnailName = convertView.findViewById(R.id.txtThumbnailName);
-            convertView.setTag(holder);
-        } else {
-            holder = (ViewHolder) convertView.getTag();
+            convertView = LayoutInflater.from(context).inflate(R.layout.item_thumbnail_simple, parent, false);
         }
-
-        ThumbnailType thumbnail = thumbnails.get(position);
-        holder.imgThumbnail.setImageResource(thumbnail.getImg());
-        holder.txtThumbnailName.setText(thumbnail.getName());
-
+        TextView txtThumbnailName = convertView.findViewById(R.id.txtThumbnailName);
+        txtThumbnailName.setText(thumbnails.get(position).getName());
         return convertView;
     }
+
+    // Hiển thị khi mở dropdown - Hiện cả hình và tên
     @Override
     public View getDropDownView(int position, View convertView, ViewGroup parent) {
-        ViewHolder holder;
         if (convertView == null) {
-            convertView = LayoutInflater.from(context).inflate(R.layout.item_thumbnail, parent, false);
-            holder = new ViewHolder();
-            holder.imgThumbnail = convertView.findViewById(R.id.imgThumbnail);
-            holder.txtThumbnailName = convertView.findViewById(R.id.txtThumbnailName);
-            convertView.setTag(holder);
-        } else {
-            holder = (ViewHolder) convertView.getTag();
+            convertView = LayoutInflater.from(context).inflate(R.layout.item_thumbnail_spinner, parent, false);
         }
 
+        ImageView imgThumbnail = convertView.findViewById(R.id.imgThumbnail);
+        TextView txtThumbnailName = convertView.findViewById(R.id.txtThumbnailName);
+
         ThumbnailType thumbnail = thumbnails.get(position);
-        holder.imgThumbnail.setImageResource(thumbnail.getImg());
-        holder.txtThumbnailName.setText(thumbnail.getName());
+        imgThumbnail.setImageResource(thumbnail.getImg());
+        txtThumbnailName.setText(thumbnail.getName());
 
         return convertView;
-    }
-    static class ViewHolder {
-        ImageView imgThumbnail;
-        TextView txtThumbnailName;
     }
 }

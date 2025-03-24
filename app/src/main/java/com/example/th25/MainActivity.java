@@ -3,7 +3,6 @@ package com.example.th25;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -14,6 +13,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
     private List<Dish> dishList;
     private DishAdapter dishAdapter;
-    private ThumbnailType selectedThumbnail = ThumbnailType.Thumbnail1; // Mặc định
+    private ThumbnailType selectedThumbnail; // Thumbnail được chọn
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,23 +44,24 @@ public class MainActivity extends AppCompatActivity {
         dishAdapter = new DishAdapter(this, dishList);
         gridViewDishes.setAdapter(dishAdapter);
 
-        // Thiết lập Adapter cho Spinner
-        ArrayAdapter<ThumbnailType> adapter = new ArrayAdapter<>(
-                this, android.R.layout.simple_spinner_item, ThumbnailType.values()
-        );
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Thiết lập Adapter cho Spinner (hiển thị cả ảnh và tên)
+        // Thiết lập Adapter cho Spinner (Hiển thị tên, Dropdown hiển thị ảnh)
+        // Khởi tạo Adapter cho Spinner
+        ThumbnailAdapter adapter = new ThumbnailAdapter(this, Arrays.asList(ThumbnailType.values()));
         spinnerThumbnail.setAdapter(adapter);
+
+
 
         // Xử lý sự kiện khi chọn thumbnail từ Spinner
         spinnerThumbnail.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                selectedThumbnail = (ThumbnailType) parent.getItemAtPosition(position);
+                selectedThumbnail = ThumbnailType.values()[position]; // Lấy thumbnail theo vị trí
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-                selectedThumbnail = ThumbnailType.Thumbnail1;
+                selectedThumbnail = ThumbnailType.Thumbnail1; // Mặc định
             }
         });
 
@@ -83,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
             edtDishName.setText("");
             chkPromotion.setChecked(false);
             spinnerThumbnail.setSelection(0);
+            Toast.makeText(this, "Added successfully", Toast.LENGTH_SHORT).show();
         });
     }
 

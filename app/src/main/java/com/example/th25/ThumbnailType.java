@@ -19,5 +19,10 @@ public enum ThumbnailType {
     public int getImg() {
         return img;
     }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }
 
