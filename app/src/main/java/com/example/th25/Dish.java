@@ -2,17 +2,24 @@ package com.example.th25;
 
 public class Dish {
     private String name;
-    private int thumbnail;
+    private int img;
     private boolean isPromotion;
 
-    public Dish(String name, int thumbnail, boolean isPromotion) {
+    public Dish(String name, int img, boolean isPromotion) {
         this.name = name;
-        this.thumbnail = thumbnail;
+        this.img = img;
         this.isPromotion = isPromotion;
     }
 
-    public String getName() { return name; }
-    public int getThumbnail() { return thumbnail; }
-    public boolean isPromotion() { return isPromotion; }
-}
+    public String getName() {
+        return name;
+    }
 
+    public int getImg() {
+        return img;
+    }
+
+    public boolean isPromotion() {
+        return isPromotion;
+    }
+}

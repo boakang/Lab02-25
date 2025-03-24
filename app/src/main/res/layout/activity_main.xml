@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -30,24 +31,50 @@
         android:minHeight="48dp" />
 
     <!-- Spinner chọn hình ảnh thumbnail -->
-    <Spinner
-        android:id="@+id/spinnerThumbnail"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:minHeight="48dp" />
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginTop="8dp">
+
+        <TextView
+            android:id="@+id/tvThumbnail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Thumbnail"
+            android:textSize="16sp"
+            android:layout_marginEnd="8dp"/>
+
+        <Spinner
+            android:id="@+id/spinnerThumbnail"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            tools:ignore="TouchTargetSizeCheck" />
+    </LinearLayout>
 
     <!-- Checkbox chọn Promotion -->
-
-    <!-- Button thêm món ăn -->
-
-    <CheckBox
-        android:id="@+id/chkPromotion"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="Promotion" />
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingEnd="15dp"
+            android:text="Promotion"
+            android:textSize="16sp" />
+
+        <CheckBox
+            android:id="@+id/chkPromotion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="-8dp"/>
+    </LinearLayout>
+    <!-- button chọn món ăn -->
     <Button
         android:id="@+id/btnAddDish"
         android:layout_width="match_parent"
@@ -60,8 +87,9 @@
         android:id="@+id/gridViewDishes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:numColumns="2"
+        android:layout_marginTop="10dp"
         android:horizontalSpacing="10dp"
-        android:verticalSpacing="10dp"
-        android:layout_marginTop="10dp"/>
+        android:numColumns="2"
+        android:verticalSpacing="10dp" />
+
 </LinearLayout>
