@@ -1,32 +1,26 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     android:padding="8dp">
 
-    <ImageView
-        android:id="@+id/imgDish"
-        android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:scaleType="centerCrop" />
-
+    <!-- Tên món ăn -->
     <TextView
         android:id="@+id/txtDishName"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:text="Dish Name"
         android:textSize="16sp"
-        android:textStyle="bold"
-        android:gravity="center" />
+        android:textColor="@android:color/black"
+        android:padding="8dp"/>
 
+    <!-- Ngôi sao -->
     <ImageView
-        android:id="@+id/imgPromotion"
+        android:id="@+id/imgStar"
         android:layout_width="24dp"
         android:layout_height="24dp"
-        android:layout_alignParentEnd="true"
-        android:layout_margin="8dp"
-        android:src="@drawable/ic_star" />
-
-
+        android:src="@drawable/ic_star"
+        android:layout_gravity="center_vertical"/>
 </LinearLayout>
