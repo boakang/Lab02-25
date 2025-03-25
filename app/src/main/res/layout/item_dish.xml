@@ -2,31 +2,54 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+
     android:orientation="vertical"
     android:padding="8dp">
 
-    <ImageView
-        android:id="@+id/imgDish"
+    <!-- FrameLayout chứa ảnh món ăn -->
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:scaleType="centerCrop" />
+        android:layout_height="120dp">
 
-    <TextView
-        android:id="@+id/txtDishName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Dish Name"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:gravity="center" />
-
-    <ImageView
-        android:id="@+id/imgPromotion"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:layout_alignParentEnd="true"
-        android:layout_margin="8dp"
-        android:src="@drawable/ic_star" />
+        <ImageView
+            android:id="@+id/imgDish"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop" />
 
 
+        <!-- LinearLayout chứa tên món ăn và nút yêu thích -->
+        <LinearLayout
+            android:background="#A13F51B5"
+            android:id="@+id/imgPromotion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:gravity="bottom"
+            android:orientation="horizontal"
+            android:paddingTop="8dp">
+
+
+            <!-- Tên món ăn -->
+            <TextView
+                android:id="@+id/txtDishName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingStart="8dp"
+                android:text="Dish Name"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <!-- Nút yêu thích (hình ngôi sao) -->
+            <ImageView
+                android:id="@+id/imgStar"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginEnd="8dp"
+                android:contentDescription="Favorite Icon"
+                android:src="@drawable/ic_star" />
+        </LinearLayout>
+    </FrameLayout>
 </LinearLayout>

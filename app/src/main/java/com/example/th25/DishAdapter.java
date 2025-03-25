@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.example.th25.R;
 
@@ -55,10 +56,10 @@ public class DishAdapter extends BaseAdapter {
         holder.imgDish.setImageResource(dish.getImg());
 
         // Nếu có khuyến mãi, hiển thị ngôi sao, ngược lại ẩn đi
+        holder.imgPromotion.setVisibility(View.GONE);
+
         if (dish.isPromotion()) {
             holder.imgPromotion.setVisibility(View.VISIBLE);
-        } else {
-            holder.imgPromotion.setVisibility(View.GONE);
         }
 
         return convertView;
@@ -68,6 +69,6 @@ public class DishAdapter extends BaseAdapter {
     static class ViewHolder {
         ImageView imgDish;
         TextView txtDishName;
-        ImageView imgPromotion;
+        LinearLayout imgPromotion;
     }
 }
